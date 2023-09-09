@@ -18,9 +18,9 @@ class Item < ApplicationRecord
   validates :item_prefecture_id, numericality: { other_than: 1 , message: "can't be blank" }
   validates :item_schedule_delivery_id, numericality: { other_than: 1 , message: "can't be blank" }
   
-  with_options presence: true, format: {with: /\A[0-9]+\z/, message: 'は半角で入力してください' } do
+  with_options presence: true, numericality: {with: /\A[0-9]+\z/, message: 'は半角で入力してください' } do
     validates :item_price
   end
-  
+  validates :item_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }
 
 end
