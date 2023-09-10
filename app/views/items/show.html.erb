@@ -4,22 +4,22 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @item.item_name %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag "item-sample.png" ,class:"item-box-img" %>
+      <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <div class="sold-out">
+      <%#<div class="sold-out">
         <span>Sold Out!!</span>
       </div>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥ 999,999,999
+        <%= number_to_currency(@item.item_price, unit: '￥', format: "%u%n", precision: 0) %>
       </span>
       <span class="item-postage">
-        <%= "配送料負担" %>
+        <%= @item.item_shipping_fee_status.name %>
       </span>
     </div>
 
