@@ -6,5 +6,6 @@ FactoryBot.define do
       address { '1-1' }
       building { 'ハイツ101' }
       phone_number { '09012345678'}
+      token {Faker::Internet.password(min_length: 10, max_length: 20)}
   end
 end
