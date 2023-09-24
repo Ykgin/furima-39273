@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
   end
 
   def require_permission
-    unless current_user == @item.user
+    unless current_user == @item.user && !Order.exists?(item: @item)
       redirect_to root_path
     end
   end
