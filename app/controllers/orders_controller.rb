@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
   end
 
   def require_permission
-    unless current_user == @item.user_id && !Order.exists?(item: @item)
+    if current_user == @item.user || @item.order.present?
       redirect_to root_path
     end
   end
