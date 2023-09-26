@@ -32,3 +32,17 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+test:
+ service: Disk
+ root: <%= Rails.root.join("tmp/storage") %>
+
+local:
+ service: Disk
+ root: <%= Rails.root.join("storage") %>
+
+amazon:
+ service: S3
+ region: ap-northeast-1
+ bucket: furima39273
+ access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+ secret_access_key:  <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
